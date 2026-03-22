@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeGallery();
     initializeScrollAnimations();
+    initializeSectionAnimations();
 });
 
 // ============================================
@@ -137,12 +138,36 @@ function initializeScrollAnimations() {
     
     // Animate various elements on scroll
     const animateElements = document.querySelectorAll(
-        '.service-card, .reason-item, .review-card, .contact-card, .trust-card'
+        '.service-card, .reason-item, .review-card, .contact-card, .trust-card, .gallery-item'
     );
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
         observer.observe(el);
+    });
+}
+
+// Animate section headers on scroll
+function initializeSectionAnimations() {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -30px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const header = entry.target.querySelector('.section-header');
+                if (header) {
+                    header.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
     });
 }
 

@@ -104,6 +104,27 @@ a:hover {
     transition: var(--transition);
     text-decoration: none;
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-primary {
@@ -116,7 +137,7 @@ a:hover {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md), 0 0 30px rgba(0, 102, 204, 0.3);
 }
 
 .btn-secondary {
@@ -129,7 +150,7 @@ a:hover {
     background-color: var(--primary-color);
     color: white;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md), 0 0 30px rgba(0, 51, 102, 0.3);
 }
 
 .btn-large {
@@ -283,12 +304,31 @@ a:hover {
     animation: fadeInLeft 0.8s ease forwards;
 }
 
+.hero-headline-wrapper {
+    overflow: hidden;
+    line-height: 1.1;
+}
+
 .hero-headline {
     font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
     color: var(--primary-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2em;
 }
+
+.hero-headline .word {
+    display: inline-block;
+    animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.hero-headline .word:nth-child(1) { animation-delay: 0.1s; }
+.hero-headline .word:nth-child(2) { animation-delay: 0.2s; }
+.hero-headline .word:nth-child(3) { animation-delay: 0.3s; }
+.hero-headline .word:nth-child(4) { animation-delay: 0.4s; }
+.hero-headline .word:nth-child(5) { animation-delay: 0.5s; }
 
 .hero-subtext {
     font-size: 1.2rem;
@@ -317,7 +357,13 @@ a:hover {
     box-shadow: var(--shadow-md);
     text-align: center;
     transition: var(--transition);
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
 }
+
+.trust-card:nth-child(1) { animation-delay: 0.1s; }
+.trust-card:nth-child(2) { animation-delay: 0.2s; }
+.trust-card:nth-child(3) { animation-delay: 0.3s; }
+.trust-card:nth-child(4) { animation-delay: 0.4s; }
 
 .trust-card:hover {
     transform: translateY(-4px);
@@ -359,7 +405,13 @@ a:hover {
 
 .trust-item {
     padding: 1.5rem;
+    animation: slideInUp 0.6s ease backwards;
 }
+
+.trust-item:nth-child(1) { animation-delay: 0.1s; }
+.trust-item:nth-child(2) { animation-delay: 0.2s; }
+.trust-item:nth-child(3) { animation-delay: 0.3s; }
+.trust-item:nth-child(4) { animation-delay: 0.4s; }
 
 .trust-number {
     font-size: 2.5rem;
@@ -484,13 +536,33 @@ a:hover {
     text-align: center;
     transition: var(--transition);
     border-top: 4px solid var(--accent-light);
+    animation: slideUp 0.6s ease backwards;
 }
 
+.services-grid .service-card:nth-child(1) { animation-delay: 0.1s; }
+.services-grid .service-card:nth-child(2) { animation-delay: 0.2s; }
+.services-grid .service-card:nth-child(3) { animation-delay: 0.3s; }
+.services-grid .service-card:nth-child(4) { animation-delay: 0.15s; }
+.services-grid .service-card:nth-child(5) { animation-delay: 0.25s; }
+.services-grid .service-card:nth-child(6) { animation-delay: 0.35s; }
+
 .service-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.02);
     box-shadow: var(--shadow-lg);
     border-top-color: var(--primary-color);
 }
+
+.service-icon {
+    animation: float 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+.service-card:nth-child(1) .service-icon { animation-delay: 0s; }
+.service-card:nth-child(2) .service-icon { animation-delay: 0.3s; }
+.service-card:nth-child(3) .service-icon { animation-delay: 0.6s; }
+.service-card:nth-child(4) .service-icon { animation-delay: 0.2s; }
+.service-card:nth-child(5) .service-icon { animation-delay: 0.5s; }
+.service-card:nth-child(6) .service-icon { animation-delay: 0.8s; }
 
 .service-icon {
     font-size: 3rem;
@@ -530,10 +602,21 @@ a:hover {
     box-shadow: var(--shadow-sm);
     text-align: center;
     transition: var(--transition);
+    animation: fadeInUp 0.6s ease backwards;
 }
+
+.reasons-grid .reason-item:nth-child(1) { animation-delay: 0.1s; }
+.reasons-grid .reason-item:nth-child(2) { animation-delay: 0.2s; }
+.reasons-grid .reason-item:nth-child(3) { animation-delay: 0.3s; }
+.reasons-grid .reason-item:nth-child(4) { animation-delay: 0.4s; }
+.reasons-grid .reason-item:nth-child(5) { animation-delay: 0.15s; }
+.reasons-grid .reason-item:nth-child(6) { animation-delay: 0.25s; }
+.reasons-grid .reason-item:nth-child(7) { animation-delay: 0.35s; }
+.reasons-grid .reason-item:nth-child(8) { animation-delay: 0.45s; }
 
 .reason-item:hover {
     box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
 }
 
 .reason-item h3 {
@@ -680,11 +763,22 @@ a:hover {
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    animation: fadeInUp 0.6s ease backwards;
 }
+
+.reviews-grid .review-card:nth-child(1) { animation-delay: 0.1s; }
+.reviews-grid .review-card:nth-child(2) { animation-delay: 0.2s; }
+.reviews-grid .review-card:nth-child(3) { animation-delay: 0.3s; }
+.reviews-grid .review-card:nth-child(4) { animation-delay: 0.4s; }
+.reviews-grid .review-card:nth-child(5) { animation-delay: 0.5s; }
 
 .review-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
+}
+
+.review-stars {
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .review-stars {
@@ -981,6 +1075,68 @@ a:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
     }
 }
 
@@ -1298,5 +1454,26 @@ a:hover {
     .lightbox-close {
         top: -35px;
         font-size: 2rem;
+    }
+    
+    /* Optimize animations for mobile */
+    .hero-headline .word {
+        animation-duration: 0.5s;
+    }
+    
+    .trust-card {
+        animation-duration: 0.5s;
+    }
+    
+    .service-card {
+        animation-duration: 0.5s;
+    }
+    
+    .reason-item {
+        animation-duration: 0.5s;
+    }
+    
+    .review-card {
+        animation-duration: 0.5s;
     }
 }
