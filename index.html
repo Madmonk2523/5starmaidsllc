@@ -368,82 +368,59 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contact Us</h2>
-                <p class="section-subtitle">Get in touch for a free quote</p>
+                <h2>Get in Touch</h2>
+                <p class="section-subtitle">Call or visit us today</p>
             </div>
             
-            <div class="contact-wrapper">
-                <div class="contact-form-container">
-                    <form id="contactForm" class="contact-form" onsubmit="handleFormSubmit(event)">
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                            <span class="error-message" id="errorName"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
-                            <span class="error-message" id="errorPhone"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                            <span class="error-message" id="errorEmail"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="standard">Standard House Cleaning</option>
-                                <option value="deep">Deep Cleaning</option>
-                                <option value="moveout">Move-In / Move-Out Cleaning</option>
-                                <option value="recurring">Recurring Cleaning</option>
-                                <option value="apartment">Apartment Cleaning</option>
-                                <option value="whole-home">Detailed Whole-Home Cleaning</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <span class="error-message" id="errorService"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message (Optional)</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us more about your cleaning needs..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-large">Send Quote Request</button>
-                        
-                        <div class="form-message" id="formMessage"></div>
-                    </form>
+            <div class="contact-grid">
+                <div class="contact-card primary-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Call Us Now</h3>
+                    <p class="contact-highlight">(732) 672-1718</p>
+                    <p>Talk directly with our team for immediate quotes and scheduling</p>
+                    <a href="tel:7326721718" class="btn btn-primary btn-large">Call Now</a>
+                    <p class="small-text">Available 7 AM - 9 PM, 7 days a week</p>
                 </div>
                 
-                <div class="contact-info">
-                    <div class="info-card">
-                        <h3>📞 Phone</h3>
-                        <p>
-                            <a href="tel:7326721718">(732) 672-1718</a>
-                        </p>
-                        <p class="small-text">Call or text anytime</p>
+                <div class="contact-card">
+                    <div class="contact-icon">🕐</div>
+                    <h3>Our Hours</h3>
+                    <div class="hours-list">
+                        <div class="hour-item">
+                            <span class="day">Monday - Sunday</span>
+                            <span class="time">7:00 AM - 9:00 PM</span>
+                        </div>
                     </div>
-                    
-                    <div class="info-card">
-                        <h3>📍 Service Area</h3>
-                        <p>Brick Township, New Jersey</p>
-                        <p class="small-text">Professional service in your area</p>
-                    </div>
-                    
-                    <div class="info-card">
-                        <h3>🕐 Hours</h3>
-                        <p>Every Day: 7 AM – 9 PM</p>
-                        <p class="small-text">Open 7 days a week</p>
-                    </div>
-                    
-                    <div class="info-card highlight">
-                        <p class="tagline">Professional cleaning at unbeatable rates</p>
-                        <p class="small-text">Trusted since 2007</p>
-                    </div>
+                    <p class="small-text">We're open every single day. No scheduling delays.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Service Area</h3>
+                    <p><strong>Brick Township, New Jersey</strong></p>
+                    <p>Professional house cleaning services serving the local community since 2007</p>
+                    <p class="small-text">Call for availability in your neighborhood</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">⭐</div>
+                    <h3>Why Choose Us?</h3>
+                    <ul class="benefit-list">
+                        <li>Trusted since 2007</li>
+                        <li>Affordable pricing</li>
+                        <li>Professional team</li>
+                        <li>Fast response times</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-cta">
+                <h3>Ready to schedule your cleaning?</h3>
+                <p>Simply give us a call for a free quote. No forms, no hassle.</p>
+                <div class="cta-buttons">
+                    <a href="tel:7326721718" class="btn btn-primary btn-large">📞 Call (732) 672-1718</a>
+                    <p class="or-text">—  or  —</p>
+                    <p class="cta-text">Tell your friends about us and help spread the word about professional cleaning at unbeatable rates!</p>
                 </div>
             </div>
         </div>

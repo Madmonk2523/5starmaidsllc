@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeGallery();
     initializeScrollAnimations();
-    initializeContactForm();
 });
 
 // ============================================
@@ -138,185 +137,13 @@ function initializeScrollAnimations() {
     
     // Animate various elements on scroll
     const animateElements = document.querySelectorAll(
-        '.service-card, .reason-item, .review-card, .info-card, .trust-card'
+        '.service-card, .reason-item, .review-card, .contact-card, .trust-card'
     );
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
         observer.observe(el);
     });
-}
-
-// ============================================
-// CONTACT FORM VALIDATION & SUBMISSION
-// ============================================
-
-function initializeContactForm() {
-    const form = document.getElementById('contactForm');
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (validateForm()) {
-                showFormSuccess();
-                form.reset();
-                
-                // Scroll to show success message
-                setTimeout(() => {
-                    const formMessage = document.getElementById('formMessage');
-                    formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100);
-            }
-        });
-        
-        // Real-time validation on input
-        const inputs = form.querySelectorAll('input, select, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-            
-            input.addEventListener('focus', function() {
-                clearFieldError(this);
-            });
-        });
-    }
-}
-
-function validateForm() {
-    const fullName = document.getElementById('fullName').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const service = document.getElementById('service').value;
-    
-    let isValid = true;
-    
-    // Clear all previous errors
-    clearAllErrors();
-    
-    // Validate full name
-    if (!fullName || fullName.length < 2) {
-        showFieldError('fullName', 'Please enter your full name');
-        isValid = false;
-    }
-    
-    // Validate phone
-    if (!phone || !isValidPhone(phone)) {
-        showFieldError('phone', 'Please enter a valid phone number');
-        isValid = false;
-    }
-    
-    // Validate email
-    if (!email || !isValidEmail(email)) {
-        showFieldError('email', 'Please enter a valid email address');
-        isValid = false;
-    }
-    
-    // Validate service selection
-    if (!service) {
-        showFieldError('service', 'Please select a service');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-function validateField(field) {
-    let isValid = true;
-    
-    switch(field.id) {
-        case 'fullName':
-            if (!field.value.trim() || field.value.trim().length < 2) {
-                showFieldError('fullName', 'Please enter your full name');
-                isValid = false;
-            }
-            break;
-        case 'phone':
-            if (!field.value.trim() || !isValidPhone(field.value)) {
-                showFieldError('phone', 'Please enter a valid phone number');
-                isValid = false;
-            }
-            break;
-        case 'email':
-            if (!field.value.trim() || !isValidEmail(field.value)) {
-                showFieldError('email', 'Please enter a valid email address');
-                isValid = false;
-            }
-            break;
-        case 'service':
-            if (!field.value) {
-                showFieldError('service', 'Please select a service');
-                isValid = false;
-            }
-            break;
-    }
-    
-    return isValid;
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function isValidPhone(phone) {
-    const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-    return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 10;
-}
-
-function showFieldError(fieldId, message) {
-    const errorElement = document.getElementById('error' + fieldId.charAt(0).toUpperCase() + fieldId.slice(1));
-    const field = document.getElementById(fieldId);
-    
-    if (errorElement) {
-        errorElement.textContent = message;
-        errorElement.classList.add('show');
-    }
-    
-    if (field) {
-        field.style.borderColor = '#e74c3c';
-    }
-}
-
-function clearFieldError(field) {
-    const errorId = 'error' + field.id.charAt(0).toUpperCase() + field.id.slice(1);
-    const errorElement = document.getElementById(errorId);
-    
-    if (errorElement) {
-        errorElement.classList.remove('show');
-        errorElement.textContent = '';
-    }
-    
-    field.style.borderColor = '';
-}
-
-function clearAllErrors() {
-    const errorMessages = document.querySelectorAll('.error-message');
-    const inputs = document.querySelectorAll('input, select, textarea');
-    
-    errorMessages.forEach(msg => {
-        msg.classList.remove('show');
-        msg.textContent = '';
-    });
-    
-    inputs.forEach(input => {
-        input.style.borderColor = '';
-    });
-}
-
-function showFormSuccess() {
-    const formMessage = document.getElementById('formMessage');
-    
-    formMessage.textContent = '✓ Thank you! We\'ll call you soon with your quote.';
-    formMessage.classList.remove('error');
-    formMessage.classList.add('success');
-    
-    // Hide message after 5 seconds
-    setTimeout(() => {
-        formMessage.classList.remove('success');
-        formMessage.textContent = '';
-    }, 5000);
 }
 
 // ============================================
